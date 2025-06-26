@@ -4,12 +4,9 @@ function iniciarJuego() {
 }
 
 function seleccionarMascotaJugador() {
-  // Mi primer variable manda a llamar el elemento de mi HTML hipodoge.
+  // Estas lineas de codigo son mis variables
   let inputHipodoge = document.getElementById("hipodoge");
-  // Esta variable manda a traer mi segun elemento de capipepo
   let inputCapipepo = document.getElementById("capipepo");
-
-  //
   let inputRatigueya = document.getElementById("ratigueya");
 
   if (inputHipodoge.checked) {
@@ -22,5 +19,5 @@ function seleccionarMascotaJugador() {
     alert("Selecciona una mascota");
   }
 }
-
+// Esta evento permite que primero se inicie mi HTML
 window.addEventListener("load", iniciarJuego);
