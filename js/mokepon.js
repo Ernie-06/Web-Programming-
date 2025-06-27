@@ -1,4 +1,5 @@
 let ataqueJugador;
+let ataqueEnemigo;
 
 function iniciarJuego() {
   let botonMascotaJugador = document.getElementById("boton-mascota");
@@ -31,12 +32,12 @@ function seleccionarMascotaJugador() {
   seleccionarMascotaEnemigo();
 }
 function seleccionarMascotaEnemigo() {
-  let ataqueAleatorio = aleatorio(1, 3);
+  let mascotaAleatoria = aleatorio(1, 3);
   let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
 
-  if (ataqueAleatorio == 1) {
+  if (mascotaAleatoria == 1) {
     spanMascotaEnemigo.innerHTML = "Hipodoge";
-  } else if (ataqueAleatorio == 2) {
+  } else if (mascotaAleatoria == 2) {
     spanMascotaEnemigo.innerHTML = "Capipepo";
   } else {
     spanMascotaEnemigo.innerHTML = "Ratigueya";
@@ -44,18 +45,41 @@ function seleccionarMascotaEnemigo() {
 }
 
 function ataqueFuego() {
-  ataqueJugador = "Fuego";
-  alert(ataqueJugador);
+  ataqueJugador = "FUEGO";
+  ataqueAletorioEnemigo();
 }
 
 function ataqueAgua() {
-  ataqueJugador = "Agua";
-  alert(ataqueJugador);
+  ataqueJugador = "AGUA";
+  ataqueAletorioEnemigo();
 }
 
 function ataqueTierra() {
-  ataqueJugador = "Tierra";
-  alert(ataqueJugador);
+  ataqueJugador = "TIERRA";
+  ataqueAletorioEnemigo();
+}
+
+function ataqueAletorioEnemigo() {
+  let ataqueAletorio = aleatorio(1, 3);
+  if (ataqueAletorio == 1) {
+    ataqueEnemigo = "FUEGO";
+  } else if (ataqueAletorio == 2) {
+    ataqueEnemigo = "AGUA";
+  } else {
+    ataqueEnemigo = "TIERRA";
+  }
+  crearMensajes();
+}
+
+function crearMensajes() {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML =
+    "Tu Mascota Ataco con " +
+    ataqueJugador +
+    " La Mascota del Enemigo Ataco con " +
+    ataqueEnemigo;
+  sectionMensajes.appendChild(parrafo);
 }
 
 // Esta function me crea un numero aleatorio
@@ -63,5 +87,5 @@ function aleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// Esta evento permite que primero se inicie mi HTML
+// Esta evento permite que primero se inicie mi HTML!
 window.addEventListener("load", iniciarJuego);
