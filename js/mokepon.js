@@ -8,16 +8,36 @@ function seleccionarMascotaJugador() {
   let inputHipodoge = document.getElementById("hipodoge");
   let inputCapipepo = document.getElementById("capipepo");
   let inputRatigueya = document.getElementById("ratigueya");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
 
   if (inputHipodoge.checked) {
-    alert("Elegiste a Hipodoge");
+    spanMascotaJugador.innerHTML = "Hipodoge";
   } else if (inputCapipepo.checked) {
-    alert("Elegiste a Capipepo");
+    spanMascotaJugador.innerHTML = "Capipepo";
   } else if (inputRatigueya.checked) {
-    alert("Elegiste a Ratigueya");
+    spanMascotaJugador.innerHTML = "Ratigueya";
   } else {
     alert("Selecciona una mascota");
   }
+  seleccionarMascotaEnemigo();
 }
+function seleccionarMascotaEnemigo() {
+  let ataqueAleatorio = aleatorio(1, 3);
+  let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+
+  if (ataqueAleatorio == 1) {
+    spanMascotaEnemigo.innerHTML = "Hipodoge";
+  } else if (ataqueAleatorio == 2) {
+    spanMascotaEnemigo.innerHTML = "Capipepo";
+  } else {
+    spanMascotaEnemigo.innerHTML = "Ratigueya";
+  }
+}
+
+// Esta function me crea un numero aleatorio
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // Esta evento permite que primero se inicie mi HTML
 window.addEventListener("load", iniciarJuego);
