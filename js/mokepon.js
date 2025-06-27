@@ -1,3 +1,4 @@
+// Estas son variables globales
 let ataqueJugador;
 let ataqueEnemigo;
 
@@ -14,6 +15,7 @@ function iniciarJuego() {
   botonTierra.addEventListener("click", ataqueTierra);
 }
 
+// Esta funcion permite que puedes seleccionar una mascota
 function seleccionarMascotaJugador() {
   // Estas lineas de codigo son mis variables
   let inputHipodoge = document.getElementById("hipodoge");
@@ -32,6 +34,8 @@ function seleccionarMascotaJugador() {
   }
   seleccionarMascotaEnemigo();
 }
+
+// Esta funcion permite que el enemigo tenga un numero aleatorio y se elija por si solo
 function seleccionarMascotaEnemigo() {
   let mascotaAleatoria = aleatorio(1, 3);
   let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
@@ -44,22 +48,23 @@ function seleccionarMascotaEnemigo() {
     spanMascotaEnemigo.innerHTML = "Ratigueya";
   }
 }
-
+// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga fuego y despues de eso el pc haga la misma eleccion pero aleatoria
 function ataqueFuego() {
   ataqueJugador = "FUEGO";
   ataqueAletorioEnemigo();
 }
+// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga agua  y despues de eso el pc haga la misma eleccion pero aleatoria
 
 function ataqueAgua() {
   ataqueJugador = "AGUA";
   ataqueAletorioEnemigo();
 }
-
+// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga tierra y despues de eso el pc haga la misma eleccion pero aleatoria
 function ataqueTierra() {
   ataqueJugador = "TIERRA";
   ataqueAletorioEnemigo();
 }
-
+// Esta funcion permite que el enemigo tenga un numero aleatorio y se elija por si solo los ataques
 function ataqueAletorioEnemigo() {
   let ataqueAletorio = aleatorio(1, 3);
   if (ataqueAletorio == 1) {
@@ -71,7 +76,7 @@ function ataqueAletorioEnemigo() {
   }
   crearMensajes();
 }
-
+// Esta funcion crea un mensaje donde concatenamos variables y creamos elementos the HTML
 function crearMensajes() {
   let sectionMensajes = document.getElementById("mensajes");
   let parrafo = document.createElement("p");
