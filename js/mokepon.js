@@ -1,6 +1,7 @@
 let ataqueJugador;
 let ataqueEnemigo;
 
+// Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y selectionar ciertos id del DOM
 function iniciarJuego() {
   let botonMascotaJugador = document.getElementById("boton-mascota");
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
