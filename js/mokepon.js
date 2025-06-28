@@ -2,7 +2,7 @@
 let ataqueJugador;
 let ataqueEnemigo;
 
-// Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y selectionar ciertos id del DOM
+// Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y seleccionar ciertos id del DOM
 function iniciarJuego() {
   let botonMascotaJugador = document.getElementById("boton-mascota");
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
@@ -48,7 +48,7 @@ function seleccionarMascotaEnemigo() {
     spanMascotaEnemigo.innerHTML = "Ratigueya";
   }
 }
-// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga fuego y despues de eso el pc haga la misma eleccion pero aleatoria
+// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador presione click se eliga fuego y despues de eso el pc haga la misma eleccion pero aleatoria
 function ataqueFuego() {
   ataqueJugador = "FUEGO";
   ataqueAletorioEnemigo();
