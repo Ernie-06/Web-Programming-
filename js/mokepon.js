@@ -74,17 +74,34 @@ function ataqueAletorioEnemigo() {
   } else {
     ataqueEnemigo = "TIERRA";
   }
-  crearMensajes();
+  combate();
+}
+
+// Esta funcion es la logica de mi combate
+function combate() {
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensajes("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensajes("GANASTE");
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensajes("GANASTE");
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensajes("GANASTE");
+  } else {
+    crearMensajes("PERDISTE");
+  }
 }
 // Esta funcion crea un mensaje donde concatenamos variables y creamos elementos the HTML
-function crearMensajes() {
+function crearMensajes(resultado) {
   let sectionMensajes = document.getElementById("mensajes");
   let parrafo = document.createElement("p");
   parrafo.innerHTML =
     "Tu Mascota Ataco con " +
     ataqueJugador +
     " La Mascota del Enemigo Ataco con " +
-    ataqueEnemigo;
+    ataqueEnemigo +
+    "-" +
+    resultado;
   sectionMensajes.appendChild(parrafo);
 }
 
