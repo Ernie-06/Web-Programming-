@@ -1,7 +1,8 @@
 // Estas son variables globales
 let ataqueJugador;
 let ataqueEnemigo;
-
+let vidasJugador = 3;
+let vidasEnemigo = 3;
 // Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y seleccionar ciertos id del DOM
 function iniciarJuego() {
   let botonMascotaJugador = document.getElementById("boton-mascota");
@@ -74,20 +75,63 @@ function ataqueAletorioEnemigo() {
   } else {
     ataqueEnemigo = "TIERRA";
   }
-  crearMensajes();
+  combate();
+}
+
+// Esta funcion es la logica de mi combate
+function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+
+  if (ataqueEnemigo == ataqueJugador) {
+    crearMensajes("EMPATE");
+  } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+    crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensajes("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
+  }
+  revisarVidas();
+}
+// Esta funcion se encarga de que cuando las vidas lleguen a 0 se dispare el mensaje perdiste o ganaste!
+function revisarVidas() {
+  if (vidasEnemigo == 0) {
+    crearMensajeFinal("Ganaste Felicidades :)");
+  } else if (vidasJugador == 0) {
+    crearMensajeFinal("Lo siento, Perdiste :(");
+  }
 }
 // Esta funcion crea un mensaje donde concatenamos variables y creamos elementos the HTML
-function crearMensajes() {
+function crearMensajes(resultado) {
   let sectionMensajes = document.getElementById("mensajes");
   let parrafo = document.createElement("p");
   parrafo.innerHTML =
     "Tu Mascota Ataco con " +
     ataqueJugador +
     " La Mascota del Enemigo Ataco con " +
-    ataqueEnemigo;
+    ataqueEnemigo +
+    "-" +
+    resultado;
   sectionMensajes.appendChild(parrafo);
 }
-
+// Esta funcion es para crear nuestro resultado final
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+  sectionMensajes.appendChild(parrafo);
+}
 // Esta function me crea un numero aleatorio
 function aleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
