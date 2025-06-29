@@ -1,7 +1,8 @@
 // Estas son variables globales
 let ataqueJugador;
 let ataqueEnemigo;
-
+let vidasJugador = 3;
+let vidasEnemigo = 3;
 // Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y seleccionar ciertos id del DOM
 function iniciarJuego() {
   let botonMascotaJugador = document.getElementById("boton-mascota");
@@ -79,16 +80,27 @@ function ataqueAletorioEnemigo() {
 
 // Esta funcion es la logica de mi combate
 function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+
   if (ataqueEnemigo == ataqueJugador) {
     crearMensajes("EMPATE");
   } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
     crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
   } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
     crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
   } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
     crearMensajes("GANASTE");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
   } else {
     crearMensajes("PERDISTE");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
   }
 }
 // Esta funcion crea un mensaje donde concatenamos variables y creamos elementos the HTML
