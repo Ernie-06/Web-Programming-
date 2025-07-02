@@ -5,6 +5,10 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 // Esta funcion se llama iniciar juego y tiene varios botones con eventos de escuchar y seleccionar ciertos id del DOM
 function iniciarJuego() {
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "none";
+  let sectionReiniciar = document.getElementById("reiniciar");
+  sectionReiniciar.style.display = "none";
   let botonMascotaJugador = document.getElementById("boton-mascota");
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
@@ -14,10 +18,19 @@ function iniciarJuego() {
   botonAgua.addEventListener("click", ataqueAgua);
   let botonTierra = document.getElementById("boton-tierra");
   botonTierra.addEventListener("click", ataqueTierra);
+
+  let botonReiniciar = document.getElementById("boton-reiniciar");
+  botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 // Esta funcion permite que puedes seleccionar una mascota
 function seleccionarMascotaJugador() {
+  let sectionSeleccionarMascota = document.getElementById(
+    "seleccionar-mascota"
+  );
+  sectionSeleccionarMascota.style.display = "none";
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "block";
   // Estas lineas de codigo son mis variables
   let inputHipodoge = document.getElementById("hipodoge");
   let inputCapipepo = document.getElementById("capipepo");
@@ -131,6 +144,20 @@ function crearMensajeFinal(resultadoFinal) {
   let parrafo = document.createElement("p");
   parrafo.innerHTML = resultadoFinal;
   sectionMensajes.appendChild(parrafo);
+
+  let botonFuego = document.getElementById("boton-fuego");
+  botonFuego.disabled = true;
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.disabled = true;
+  let botonTierra = document.getElementById("boton-tierra");
+  botonTierra.disabled = true;
+
+  let sectionReiniciar = document.getElementById("reiniciar");
+  sectionReiniciar.style.display = "block";
+}
+// Esta funcion activa el boton de reiniciar
+function reiniciarJuego() {
+  location.reload();
 }
 // Esta function me crea un numero aleatorio
 function aleatorio(min, max) {
