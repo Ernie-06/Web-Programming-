@@ -19,7 +19,7 @@ const contenedorTarjetas = document.getElementById("contenedorTarjetas");
 const contenedorAtaques = document.getElementById("contenedorAtaques");
 
 let mokepones = [];
-let ataqueJugador;
+let ataqueJugador = [];
 let ataqueEnemigo;
 let opcionDeMokepones;
 let inputHipodoge;
@@ -28,6 +28,7 @@ let inputRatigueya;
 let botonFuego;
 let botonAgua;
 let botonTierra;
+let botones = [];
 let mascotaJugador;
 let ataquesMokepon;
 
@@ -135,17 +136,31 @@ function extraerAtaques(mascotaJugador) {
 function mostrarAtaques(ataques) {
   ataques.forEach((ataque) => {
     ataquesMokepon = `
-     <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`;
+     <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}</button>`;
     contenedorAtaques.innerHTML += ataquesMokepon;
   });
 
   botonFuego = document.getElementById("boton-fuego");
   botonAgua = document.getElementById("boton-agua");
   botonTierra = document.getElementById("boton-tierra");
+  botones = document.querySelectorAll(".BAtaque");
+}
 
-  botonFuego.addEventListener("click", ataqueFuego);
-  botonAgua.addEventListener("click", ataqueAgua);
-  botonTierra.addEventListener("click", ataqueTierra);
+function secuenciaAtaques() {
+  botones.forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+      if (e.target.textContent === "🔥") {
+        ataqueJugador.push("FUEGO");
+        boton.style.background = "#112f58";
+      } else if (e.target.textContent === "💧") {
+        ataqueJugador.push("AGUA");
+        boton.style.background = "#112f58";
+      } else {
+        ataqueJugador.push("TIERRA");
+        boton.style.background = "#112f58";
+      }
+    });
+  });
 }
 
 // Esta funcion permite que el enemigo tenga un numero aleatorio y se elija por si solo
@@ -153,22 +168,7 @@ function seleccionarMascotaEnemigo() {
   let mascotaAleatoria = aleatorio(0, mokepones.length - 1);
 
   spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
-}
-// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador presione click se eliga fuego y despues de eso el pc haga la misma eleccion pero aleatoria
-function ataqueFuego() {
-  ataqueJugador = "FUEGO";
-  ataqueAletorioEnemigo();
-}
-// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga agua  y despues de eso el pc haga la misma eleccion pero aleatoria
-
-function ataqueAgua() {
-  ataqueJugador = "AGUA";
-  ataqueAletorioEnemigo();
-}
-// Esta funcion es la que manipulamos con la variable global y hace que cuando el jugador precione click se eliga tierra y despues de eso el pc haga la misma eleccion pero aleatoria
-function ataqueTierra() {
-  ataqueJugador = "TIERRA";
-  ataqueAletorioEnemigo();
+  secuenciaAtaques();
 }
 // Esta funcion permite que el enemigo tenga un numero aleatorio y se elija por si solo los ataques
 function ataqueAletorioEnemigo() {
