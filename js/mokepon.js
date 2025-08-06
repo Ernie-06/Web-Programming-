@@ -156,15 +156,15 @@ function secuenciaAtaques() {
       if (e.target.textContent === "🔥") {
         ataqueJugador.push("FUEGO");
         boton.style.background = "#112f58";
-        boton.disable = true;
+        boton.disabled = true;
       } else if (e.target.textContent === "💧") {
         ataqueJugador.push("AGUA");
         boton.style.background = "#112f58";
-        boton.disable = true;
+        boton.disabled = true;
       } else {
         ataqueJugador.push("TIERRA");
         boton.style.background = "#112f58";
-        boton.disable = true;
+        boton.disabled = true;
       }
       ataqueAletorioEnemigo();
     });
@@ -278,4 +278,3 @@ function aleatorio(min, max) {
 
 // Esta evento permite que primero se inicie mi HTML!
 window.addEventListener("load", iniciarJuego);
-
