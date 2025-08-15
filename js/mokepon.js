@@ -41,6 +41,7 @@ let victoriasEnemigo = 0;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 let lienzo = mapa.getContext("2d");
+let intervalo;
 
 class Mokepon {
   constructor(nombre, foto, vida) {
@@ -54,6 +55,8 @@ class Mokepon {
     this.alto = 80;
     this.mapaFoto = new Image();
     this.mapaFoto.src = foto;
+    this.velocidadX = 0;
+    this.velocidadY = 0;
   }
 }
 
@@ -120,6 +123,7 @@ function seleccionarMascotaJugador() {
 
   //sectionSeleccionarAtaque.style.display = "flex";
   sectionVerMapa.style.display = "flex";
+  intervalo = setInterval(pintarPersonaje, 50);
 
   if (inputHipodoge.checked) {
     spanMascotaJugador.innerHTML = inputHipodoge.id;
@@ -288,6 +292,8 @@ function aleatorio(min, max) {
 }
 
 function pintarPersonaje() {
+  capipepo.x = capipepo.x + capipepo.velocidadX;
+  capipepo.y = capipepo.y + capipepo.velocidadY;
   lienzo.clearRect(0, 0, mapa.width, mapa.height);
   lienzo.drawImage(
     capipepo.mapaFoto,
@@ -298,9 +304,25 @@ function pintarPersonaje() {
   );
 }
 
-function moverCapipepo() {
-  capipepo.x = capipepo.x + 5;
-  pintarPersonaje();
+function moverDerecha() {
+  capipepo.velocidadX = 5;
+}
+
+function moverIzquierda() {
+  capipepo.velocidadX = -5;
+}
+
+function moverArriba() {
+  capipepo.velocidadY = -5;
+}
+
+function moverAbajo() {
+  capipepo.velocidadY = 5;
+}
+
+function detenerMovimiento() {
+  capipepo.velocidadX = 0;
+  capipepo.velocidadY = 0;
 }
 
 // Esta evento permite que primero se inicie mi HTML!
