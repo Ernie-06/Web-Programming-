@@ -70,7 +70,7 @@ let hipodoge = new Mokepon(
   "Hipodoge",
   "../images/hipodoge.webp",
   5,
-  "../images/hipodoge 2.webp"
+  "../images/hipodoge2.webp"
 );
 
 let capipepo = new Mokepon(
