@@ -1,7 +1,7 @@
 {
   "name": "web-programming-",
   "version": "1.0.0",
-  "description": "", 
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Ernie-06/Web-Programming-/issues"
   },
-  "homepage": "https://github.com/Ernie-06/Web-Programming-#readme"
+  "homepage": "https://github.com/Ernie-06/Web-Programming-#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
 }
