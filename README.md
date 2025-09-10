@@ -16,15 +16,17 @@ El jugador puede seleccionar una mascota, moverse en un mapa interactivo y enfre
 ## Tecnologías utilizadas
 
 ### Frontend
+
 - HTML
 - CSS
-- JavaScript 
+- JavaScript
 - Canvas API
 
 ### Backend
+
 - Node.js
 - Express
-- CORS
+- CORS -se usa para permitir o restringir el acceso a recursos web desde otros dominios
 - JSON como formato de comunicación
 
 ## Instalación y ejecución
@@ -34,3 +36,7 @@ El jugador puede seleccionar una mascota, moverse en un mapa interactivo y enfre
 ```bash
 git clone https://github.com/tu-usuario/mokepon.git
 cd mokepon
+
+## como iniciar el servidor se utiliza
+node index.js
+```
