@@ -1,6 +1,6 @@
 # Mokepon - Juego de Batalla Multijugador
 
-**Mokepon** es un juego de batalla multijugador basado en navegador. Está inspirado en Pokémon y fue desarrollado con HTML, CSS, JavaScript (Vanilla) y un backend en Node.js con Express.
+**Mokepon** es un juego de batalla multijugador basado en navegador. Está inspirado en un sueño mio y fue desarrollado con HTML, CSS, JavaScript y un backend en Node.js con Express.
 
 El jugador puede seleccionar una mascota, moverse en un mapa interactivo y enfrentarse a otros jugadores en combates por turnos.
 
