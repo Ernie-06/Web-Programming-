@@ -159,7 +159,7 @@ function iniciarJuego() {
 }
 
 function unirseAlJuego() {
-  fetch("http://192.168.10.116:8080/unirse").then((res) => {
+  fetch("http://localhost:8080/unirse").then((res) => {
     if (res.ok) {
       res.text().then((respuesta) => {
         console.log(respuesta);
@@ -192,7 +192,7 @@ function seleccionarMascotaJugador() {
   iniciarMapa();
 }
 function seleccionarMokepon(mascotaJugador) {
-  fetch(`http://192.168.10.116:8080/mokepon/${jugadorId}`, {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -252,7 +252,7 @@ function secuenciaAtaques() {
 function enviarAtaques() {
   console.log("Enviar ataques", ataqueJugador);
 
-  fetch(`http://192.168.10.116:8080/mokepon/${jugadorId}/ataques`, {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -268,18 +268,18 @@ function enviarAtaques() {
 function obtenerAtaques() {
   console.log("OBTENER ATAQUES");
 
-  fetch(`http://192.168.10.116:8080/mokepon/${enemigoId}/ataques`).then(
-    function (res) {
-      if (res.ok) {
-        res.json().then(function ({ ataques }) {
-          if (ataques.length === 5) {
-            ataqueEnemigo = ataques;
-            combate();
-          }
-        });
-      }
+  fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`).then(function (
+    res
+  ) {
+    if (res.ok) {
+      res.json().then(function ({ ataques }) {
+        if (ataques.length === 5) {
+          ataqueEnemigo = ataques;
+          combate();
+        }
+      });
     }
-  );
+  });
 }
 
 // Esta funcion permite que el enemigo tenga un numero aleatorio y se elija por si solo
@@ -413,7 +413,7 @@ function pintarCanvas() {
 }
 
 function enviarPosicion(x, y) {
-  fetch(`http://192.168.10.116:8080/mokepon/${jugadorId}/posicion`, {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
     method: "post",
     headers: {
       "Content-Type": "application/json",
